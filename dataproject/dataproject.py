@@ -216,7 +216,7 @@ plt.show()
 # 
 # A way of comparing the rate of exponetial growth between the countries is to plot the recorded COVID-19 related number on a logarithmic scale. A flatter curve indicates a decreasing growth rate in the number of cases and deaths.
 # 
-# Note: The following 4 graphs are plotted using bokeh plot tools. As such, every plot will appear in a new browser-tab and require connection to the internet.
+# Note: The following 4 graphs are plotted using bokeh plot tools. As such, every plot will appear in a new browser-tab.
 # 
 # A more elegant solution (first plot) enables the hover tool, however to enable a legend (with the ability of hiding a chosen contry) a less elegant approach is also presented (second plot).
 
@@ -235,7 +235,7 @@ source.add(covid['date'].apply(lambda d: d.strftime('%Y-%m-%d')), 'date_formatte
 COUNTRIES = ['DNK', 'ESP', 'ITA', 'SWE', 'USA']
 MARKERS = ['hex', 'circle_x', 'triangle', 'square', 'circle']
 
-p = figure(title='Accumulated Number of Confirmed COVID-19 Cases', x_axis_type='datetime', 
+p = figure(title='Total Number of Confirmed COVID-19 Cases', x_axis_type='datetime', 
            x_axis_label='Date', y_axis_label='Log Cases', y_axis_type="log", plot_height=400, plot_width=700,
            tools=[HoverTool(tooltips=[('Country','@country'),('Confirmed Cases','@total_cases' ), ('Date','@date_formatted')])])
 
@@ -243,7 +243,7 @@ p.scatter("date", "total_cases", source=source, fill_alpha=0.4, size=6,
           marker=factor_mark('country', MARKERS, COUNTRIES),
           color=factor_cmap('country', 'Category10_5', COUNTRIES))
 
-output_file("COVID19_1.html", title="Accumulated Number of Confirmed COVID-19 Cases")
+output_file("COVID19_1.html", title="Total Number of Confirmed COVID-19 Cases")
 
 show(p)
 
